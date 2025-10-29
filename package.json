@@ -1,0 +1,27 @@
+{
+  "name": "admin-toko",
+  "version": "1.0.0",
+  "description": "",
+  "main": "database.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhamademiralfani/admin-toko.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/muhamademiralfani/admin-toko/issues"
+  },
+  "homepage": "https://github.com/muhamademiralfani/admin-toko#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  }
+}
