@@ -29,7 +29,7 @@ Ini adalah proyek admin page sederhana yang dibuat menggunakan Node.js, Express,
     ```bash
     npm install
     ```
-    Perintah ini akan menginstal `express`, `ejs`, dan `sqlite3` sesuai [package.json](muhamademiralfani/admin-toko/package.json).
+    Perintah ini akan menginstal `express`, `ejs`, dan `sqlite3` sesuai [package.json](package.json).
 
 3.  **Setup Database (Hanya dijalankan sekali):**
     Jalankan skrip `database.js` untuk membuat file `store.db` dan mengisi 10 produk awal.
