@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Toko Sederhana</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Page Toko Sederhana</h1>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Input Pembelian Baru</h2>
+            
+            <% if (error) { %>
+                <div class="error-message"><%= error %></div>
+            <% } %>
+
+            <form action="/beli" method="POST">
+                <div class="form-group">
+                    <label for="produk_id">Pilih Produk:</label>
+                    <select id="produk_id" name="produk_id" required>
+                        <% products.forEach(product => { %>
+                            <option value="<%= product.id %>">
+                                <%= product.nama_produk %> (Stok: <%= product.stock %>) - Rp<%= product.harga.toLocaleString('id-ID') %>
+                            </option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jumlah">Jumlah:</label>
+                    <input type="number" id="jumlah" name="jumlah" min="1" value="1" required>
+                </div>
+                <button type="submit" class="btn-submit">Input Pembelian</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Daftar Produk & Stock</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Produk</th>
+                        <th>Harga</th>
+                        <th>Stock Tersisa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(product => { %>
+                        <tr>
+                            <td><%= product.nama_produk %></td>
+                            <td>Rp<%= product.harga.toLocaleString('id-ID') %></td>
+                            <td class="<%= product.stock < 10 ? 'stock-rendah' : '' %>">
+                                <%= product.stock %>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="card">
+            <h2>Riwayat Pembelian Terakhir</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Produk</th>
+                        <th>Jumlah</th>
+                        <th>Total Harga</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% purchases.forEach(p => { %>
+                        <tr>
+                            <td><%= p.tanggal %></td>
+                            <td><%= p.nama_produk %></td>
+                            <td><%= p.jumlah %></td>
+                            <td>Rp<%= p.total_harga.toLocaleString('id-ID') %></td>
+                            <td>
+                                <span class="status <%= p.status.toLowerCase() %>">
+                                    <%= p.status %>
+                                </span>
+                            </td>
+                            <td>
+                                <% if (p.status === 'Berhasil') { %>
+                                    <form action="/cancel/<%= p.id %>" method="POST" style="margin:0;">
+                                        <button type="submit" class="btn-cancel">Batalkan</button>
+                                    </form>
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
