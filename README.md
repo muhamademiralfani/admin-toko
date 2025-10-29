@@ -21,7 +21,7 @@ Ini adalah proyek admin page sederhana yang dibuat menggunakan Node.js, Express,
 
 1.  **Clone repositori ini:**
     ```bash
-    git clone [https://github.com/USERNAME-ANDA/NAMA-REPOSITORI-ANDA.git](https://github.com/USERNAME-ANDA/NAMA-REPOSITORI-ANDA.git)
+    git clone [https://github.com/muhamademiralfani/admin-toko.git](https://github.com/muhamademiralfani/admin-toko.git)
     cd NAMA-REPOSITORI-ANDA
     ```
 
